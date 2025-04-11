@@ -2,42 +2,46 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация и Регистрация</title>
+    <meta charset="UTF-8">
+    <title>РђРІС‚РѕСЂРёР·Р°С†РёСЏ Рё Р РµРіРёСЃС‚СЂР°С†РёСЏ</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div class="container">
+        <!-- РђРІС‚РѕСЂРёР·Р°С†РёСЏ -->
         <div class="form-container active" id="loginForm">
-            <h2>Войти</h2>
-            <form>
+            <h2>РђРІС‚РѕСЂРёР·Р°С†РёСЏ</h2>
+            <form action="login.php" method="POST">
                 <div class="form-group">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Пароль" required>
+                    <input type="password" name="password" placeholder="РџР°СЂРѕР»СЊ" required>
                 </div>
-                <button type="submit">Войти</button>
+                <button type="submit">Р’РѕР№С‚Рё</button>
             </form>
             <div class="toggle-form">
-                Нет аккаунта? <a onclick="showRegisterForm()">Зарегистрироваться</a>
+                РќРµС‚ Р°РєРєР°СѓРЅС‚Р°? <a onclick="showRegisterForm()">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
             </div>
         </div>
+
+        <!-- Р РµРіРёСЃС‚СЂР°С†РёСЏ -->
         <div class="form-container" id="registerForm">
-            <h2>Регистрация</h2>
-            <form>
+            <h2>Р РµРіРёСЃС‚СЂР°С†РёСЏ</h2>
+            <form action="register.php" method="POST">
                 <div class="form-group">
-                    <input type="text" placeholder="Имя" required>
+                    <input type="text" name="name" placeholder="РРјСЏ" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Пароль" required>
+                    <input type="password" name="password" placeholder="РџР°СЂРѕР»СЊ" required>
                 </div>
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</button>
             </form>
             <div class="toggle-form">
-                Уже есть аккаунт? <a onclick="showLoginForm()">Войти</a>
+                РЈР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚? <a onclick="showLoginForm()">Р’РѕР№С‚Рё</a>
             </div>
         </div>
     </div>
@@ -47,6 +51,7 @@
             document.getElementById('loginForm').classList.remove('active');
             document.getElementById('registerForm').classList.add('active');
         }
+
         function showLoginForm() {
             document.getElementById('registerForm').classList.remove('active');
             document.getElementById('loginForm').classList.add('active');
