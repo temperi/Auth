@@ -1,18 +1,22 @@
 <?php
-$host = 'localhost';      // Хост базы данных
-$db   = 'temperi_db';     // Имя базы данных
-$user = 'root';           // Пользователь базы
-$pass = '';               // Пароль (оставь пустым для локального сервера)
+$host = 'localhost';
+$db   = 'temperi_db';
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
 try {
     $pdo = new PDO($dsn, $user, $pass);
-    // Включаем отображение ошибок
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo 'Ошибка подключения: ' . $e->getMessage();
-    exit;
+    // В продакшене не показываем детали ошибки
+    if (defined('ENV') && ENV === 'production') {
+        error_log('Database connection error: ' . $e->getMessage());
+        die('Ошибка подключения к базе данных. Пожалуйста, попробуйте позже.');
+    } else {
+        die('Ошибка подключения: ' . $e->getMessage());
+    }
 }
 ?>
